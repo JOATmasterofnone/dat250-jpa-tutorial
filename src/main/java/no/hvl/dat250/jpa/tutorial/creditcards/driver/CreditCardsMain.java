@@ -12,14 +12,11 @@ public class CreditCardsMain {
 
   public static void main(String[] args) {
 
-    try {
-      EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-      EntityManager em = factory.createEntityManager();
+    try (EntityManagerFactory factory = Persistence.createEntityManagerFactory(
+            PERSISTENCE_UNIT_NAME); EntityManager em = factory.createEntityManager()) {
       em.getTransaction().begin();
       List<Object> createdObjects = createObjects(em);
       em.getTransaction().commit();
-      em.close();
-      factory.close();
       //prettyPrintObjects(createdObjects);
     } catch (Exception e) {
       e.printStackTrace();
@@ -75,6 +72,10 @@ public class CreditCardsMain {
     address.setStreet("Inndalsveien");
     address.setNumber(28);
 
+    Set<Address> addresses = new HashSet<>();
+    addresses.add(address);
+    customer.setAddresses(addresses);
+
     CreditCard card1 = new CreditCard();
     card1.setNumber(12345);
     card1.setBalance(-5000);
@@ -85,7 +86,6 @@ public class CreditCardsMain {
     card2.setBalance(1);
     card2.setCreditLimit(2000);
 
-    customer.setCreditCards(new HashSet<>());
     customer.getCreditCards().add(card1);
     customer.getCreditCards().add(card2);
 

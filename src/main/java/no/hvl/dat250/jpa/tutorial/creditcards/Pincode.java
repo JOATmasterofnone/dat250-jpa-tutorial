@@ -12,20 +12,17 @@ public class Pincode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String pincode;
+
+    @Getter
+    @Setter
+    private String code;
+
+    @Getter
+    @Setter
     private Integer count;
 
-    public String getCode() {
-        // TODO: implement method!
-        return null;
-    }
-
-    public Integer getCount() {
-        // TODO: implement method!
-        return null;
-    }
 
     public void setCode(String pincode) {
-        this.pincode = pincode;
+        this.code = pincode;
     }
 }

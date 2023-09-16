@@ -15,7 +15,13 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Getter
+    @Setter
     private String street;
+
+    @Getter
+    @Setter
     private Integer number;
 
     @ManyToMany(mappedBy = "addresses")

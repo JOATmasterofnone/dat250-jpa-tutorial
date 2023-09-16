@@ -12,34 +12,37 @@ public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // TODO: implement method!
+
     @Getter
+    @Setter
     private Integer number;
-    // TODO: implement method!
+
     @Getter
+    @Setter
     private Integer creditLimit;
-    private Integer name;
-    // TODO: implement method!
+
     @Getter
+    @Setter
+    private Integer name;
+
+    @Getter
+    @Setter
     private Integer balance;
 
     public Bank getOwningBank() {
-        // TODO: implement method!
-        return null;
+        return bank;
     }
 
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "bank_id")
     private Bank bank;
 
-    // TODO: implement method!
-    @Getter
-    @ManyToOne
-    @JoinColumn(name = "pincode_id")
-    private Pincode pincode;
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
+    @Getter
+    @Setter
+    @ManyToOne
+    private Pincode pincode;
 
 }

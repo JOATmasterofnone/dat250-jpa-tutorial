@@ -19,18 +19,12 @@ public class Customer {
     private String name;
 
     @Getter
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "customer_address",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id"))
+    @Setter
+    @ManyToMany
     private Set<Address> addresses = new HashSet<>();
 
     @Getter
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "customer_credit_card",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "credit_card_id")
-    )
+    @Setter
+    @ManyToMany
     private Set<CreditCard> creditCards = new HashSet<>();
 }

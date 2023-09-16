@@ -13,10 +13,10 @@ public class Bank {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
-    // TODO: implement method!
+
     @Getter
+    @Setter
     private String name;
 
     @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, orphanRemoval = true)
